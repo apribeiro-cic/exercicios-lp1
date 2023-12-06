@@ -1,0 +1,140 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="ariel"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-12-06 12:14:32 "/>
+        <attribute name="created" value="YXJpZWw7REVTS1RPUC1NNlU0Mk9NOzIwMjMtMTItMDU7IjExOjQ4OjI3ICI7Mjc3NQ=="/>
+        <attribute name="edited" value="YXJpZWw7REVTS1RPUC1NNlU0Mk9NOzIwMjMtMTItMDY7IjEyOjE0OjMyICI7MTsyODc0"/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="D1" type="Integer" array="False" size=""/>
+            <assign variable="D1" expression="5"/>
+            <declare name="D2" type="Integer" array="False" size=""/>
+            <assign variable="D2" expression="7"/>
+            <declare name="numAcertos" type="Integer" array="False" size=""/>
+            <declare name="u" type="String" array="False" size=""/>
+            <assign variable="u" expression="&quot;_&quot;"/>
+            <declare name="mat" type="Integer" array="True" size="D1 &amp; D2"/>
+            <for variable="i" start="0" end="D1" direction="inc" step="1">
+                <for variable="i" start="0" end="D2" direction="inc" step="1">
+                    <assign variable="mat[i &amp; j]" expression="u"/>
+                </for>
+            </for>
+            <declare name="numero" type="Integer" array="False" size=""/>
+            <declare name="resposta" type="String" array="True" size="5"/>
+            <call expression="mostrarJogo()"/>
+            <while expression="numAcertos &lt; 3">
+                <output expression="&quot;1. Qual &#233; coisa, qual &#233; ela, que n&#227;o tem p&#233;s nem patas e passa e corre, sem parar. Uns dizem que voa, mas n&#227;o tem asas e outros dizem ser dinheiro, sem jamais o terem visto.&quot;" newline="True"/>
+                <output expression="&quot;2. Tem 88 teclas, mas n&#227;o &#233; teclado.\n&quot;" newline="True"/>
+                <output expression="&quot;3. Tipo de habilidade que est&#225; conosco desde o nascimento, mas alguns levam uma vida inteira pra descobrir.&quot;" newline="True"/>
+                <output expression="&quot;Digite sua resposta: &quot;" newline="True"/>
+                <input variable="resposta"/>
+                <input variable="numero"/>
+                <call expression="checarResposta(numero, resposta)"/>
+                <call expression="mostrarJogo()"/>
+            </while>
+            <output expression="&quot;Parab&#233;ns, voc&#234; ganhou!&quot;" newline="True"/>
+        </body>
+    </function>
+    <function name="checarResposta" type="None" variable="">
+        <parameters>
+            <parameter name="num" type="Integer" array="False"/>
+            <parameter name="resp" type="String" array="True"/>
+        </parameters>
+        <body>
+            <declare name="contaAcertos" type="Integer" array="False" size=""/>
+            <if expression="num == 1">
+                <then>
+                    <assign variable="contaAcertos" expression="0"/>
+                    <for variable="i" start="0" end="6" direction="inc" step="1">
+                        <if expression="resp1[i] == resp[i]">
+                            <then>
+                                <assign variable="contaAcertos" expression="contaAcertos + 1"/>
+                            </then>
+                            <else/>
+                        </if>
+                    </for>
+                    <if expression="contaAcertos == 5">
+                        <then>
+                            <output expression="&quot;Voc&#234; acertou!&quot;" newline="True"/>
+                            <for variable="i" start="0" end="6" direction="inc" step="1">
+                                <assign variable="mat[0 &amp; i]" expression="resp1[i]"/>
+                            </for>
+                            <assign variable="numAcertos" expression="numAcertos + 1"/>
+                        </then>
+                        <else>
+                            <output expression="&quot;Voc&#234; errou.&quot;" newline="True"/>
+                        </else>
+                    </if>
+                </then>
+                <else>
+                    <if expression="num == 2">
+                        <then>
+                            <assign variable="contaAcertos" expression="0"/>
+                            <for variable="i" start="0" end="6" direction="inc" step="1">
+                                <if expression="resp2[i] == resp[i]">
+                                    <then>
+                                        <assign variable="contaAcertos" expression="contaAcertos + 1"/>
+                                    </then>
+                                    <else/>
+                                </if>
+                            </for>
+                            <if expression="contaAcertos == 5">
+                                <then>
+                                    <output expression="&quot;Voc&#234; acertou!&quot;" newline="True"/>
+                                    <for variable="i" start="0" end="6" direction="inc" step="1">
+                                        <assign variable="mat[i &amp; 3]" expression="resp2[i]"/>
+                                    </for>
+                                    <assign variable="numAcertos" expression="numAcertos + 1"/>
+                                </then>
+                                <else>
+                                    <output expression="&quot;Voc&#234; errou.&quot;" newline="True"/>
+                                </else>
+                            </if>
+                        </then>
+                        <else>
+                            <if expression="num == 3">
+                                <then>
+                                    <assign variable="contaAcertos" expression="0"/>
+                                    <for variable="i" start="0" end="6" direction="inc" step="1">
+                                        <if expression="resp3[i] == resp[i]">
+                                            <then>
+                                                <assign variable="contaAcertos" expression="contaAcertos + 1"/>
+                                            </then>
+                                            <else/>
+                                        </if>
+                                    </for>
+                                    <if expression="contaAcertos == 5">
+                                        <then>
+                                            <output expression="&quot;Voc&#234; acertou!&quot;" newline="True"/>
+                                            <for variable="i" start="0" end="7" direction="inc" step="1">
+                                                <assign variable="mat[3 &amp; i+2]" expression="resp3[i]"/>
+                                            </for>
+                                            <assign variable="numAcertos" expression="numAcertos + 1"/>
+                                        </then>
+                                        <else>
+                                            <output expression="&quot;Voc&#234; errou.&quot;" newline="True"/>
+                                        </else>
+                                    </if>
+                                </then>
+                                <else>
+                                    <output expression="&quot;Resposta errada. DICA: Todas a palavras tem 5 letras.&quot;" newline="True"/>
+                                </else>
+                            </if>
+                        </else>
+                    </if>
+                </else>
+            </if>
+        </body>
+    </function>
+    <function name="mostrarJogo" type="None" variable="">
+        <parameters/>
+        <body>
+            <output expression="mostrarMatriz()" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>

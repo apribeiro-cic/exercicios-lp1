@@ -1,0 +1,98 @@
+﻿Função Principal
+    Definir Inteiro D1
+
+    Atribuir D1 = 5
+    Definir Inteiro D2
+
+    Atribuir D2 = 7
+    Definir Inteiro numAcertos
+    Definir Caracteres u
+
+    Atribuir u = "_"
+    Definir Inteiro Arranjo mat[D1 & D2]
+
+    Para i = 0 até D1
+        Para i = 0 até D2
+            Atribuir mat[i & j] = u
+        Fim
+    Fim
+    Definir Inteiro numero
+    Definir Caracteres Arranjo resposta[5]
+
+    Chamar mostrarJogo()
+    Enquanto numAcertos < 3
+        Saída "1. Qual é coisa, qual é ela, que não tem pés nem patas e passa e corre, sem parar. Uns dizem que voa, mas não tem asas e outros dizem ser dinheiro, sem jamais o terem visto."
+        Saída "2. Tem 88 teclas, mas não é teclado.\n"
+        Saída "3. Tipo de habilidade que está conosco desde o nascimento, mas alguns levam uma vida inteira pra descobrir."
+        Saída "Digite sua resposta: "
+        Entrada resposta
+        Entrada numero
+        Chamar checarResposta(numero, resposta)
+        Chamar mostrarJogo()
+    Fim
+    Saída "Parabéns, você ganhou!"
+Fim
+
+Função checarResposta (Inteiro num, Caracteres Arranjo resp)
+    Definir Inteiro contaAcertos
+
+    Se num == 1
+        Atribuir contaAcertos = 0
+        Para i = 0 até 6
+            Se resp1[i] == resp[i]
+                Atribuir contaAcertos = contaAcertos + 1
+            Fim
+        Fim
+        Se contaAcertos == 5
+            Saída "Você acertou!"
+            Para i = 0 até 6
+                Atribuir mat[0 & i] = resp1[i]
+            Fim
+            Atribuir numAcertos = numAcertos + 1
+        Senão
+            Saída "Você errou."
+        Fim
+    Senão
+        Se num == 2
+            Atribuir contaAcertos = 0
+            Para i = 0 até 6
+                Se resp2[i] == resp[i]
+                    Atribuir contaAcertos = contaAcertos + 1
+                Fim
+            Fim
+            Se contaAcertos == 5
+                Saída "Você acertou!"
+                Para i = 0 até 6
+                    Atribuir mat[i & 3] = resp2[i]
+                Fim
+                Atribuir numAcertos = numAcertos + 1
+            Senão
+                Saída "Você errou."
+            Fim
+        Senão
+            Se num == 3
+                Atribuir contaAcertos = 0
+                Para i = 0 até 6
+                    Se resp3[i] == resp[i]
+                        Atribuir contaAcertos = contaAcertos + 1
+                    Fim
+                Fim
+                Se contaAcertos == 5
+                    Saída "Você acertou!"
+                    Para i = 0 até 7
+                        Atribuir mat[3 & i+2] = resp3[i]
+                    Fim
+                    Atribuir numAcertos = numAcertos + 1
+                Senão
+                    Saída "Você errou."
+                Fim
+            Senão
+                Saída "Resposta errada. DICA: Todas a palavras tem 5 letras."
+            Fim
+        Fim
+    Fim
+Fim
+
+Função mostrarJogo
+    Saída mostrarMatriz()
+Fim

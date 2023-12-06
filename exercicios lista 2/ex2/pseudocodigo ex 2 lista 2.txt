@@ -1,0 +1,121 @@
+﻿Função Principal
+    Definir Inteiro N
+
+    Atribuir N = 10000
+    Definir Inteiro Arranjo vec[10000]
+    Definir Inteiro lrgstValue1, lrgstValue2, lrgstValue3
+    Definir Inteiro smllstValue1, smllstValue2, smllstValue3
+    Definir Inteiro contOcorrencias, aux
+    Definir Inteiro mediana, soma, media, somaDif, desvioP
+
+    Saída "Array aleatório: "
+    Para i = 0 até N
+        Atribuir vec[i] = Rand() % 1000
+        Atribuir soma = soma + vec[i]
+        Saída vec[i]
+    Fim
+    Chamar sortArray(vec, N)
+    Chamar calcMedia(vec, N)
+    Chamar calcDesvioP(vec, N)
+    Chamar calcMediana(vec, N)
+    Chamar getLargestValue(vec, N)
+    Chamar getSmallestValue(vec, N)
+    Saída "Array aleatório ordenado: "
+    Para i = 0 até N
+        Saída vec[i]
+    Fim
+    Saída "3 maiores valores: "& lrgstValue1 & lrgstValue2 & lrgstValue3
+    Saída "3 menores valores: "& smllstValue1 & smllstValue2 & smllstValue3
+    Saída "Média:" & media
+    Saída "Desvio padrão: " & desvioP
+    Saída "Mediana" & mediana
+    Definir Inteiro Arranjo vec2[contOcorrencias]
+
+    Chamar novoArray(vec2)
+    Saída "Array novo: "
+    Para i = 0 até contOcorrencias
+        Saída vec2[i]
+    Fim
+    Chamar calcMedia(vec2, contOcorrencias)
+    Chamar  calcMediana(vec2, contOcorrencias)
+    Chamar calcDesvioP(vec2, contOcorrencias)
+    Chamar calcMedia(vec, N)
+    Chamar calcDesvioP(vec, N)
+    Chamar calcMediana(vec, N)
+    Saída "Média:" & media
+    Saída "Desvio padrão: " & desvioP
+    Saída "Mediana" & mediana
+Fim
+
+Função calcDesvioP (Inteiro Arranjo vecP, Inteiro tamanho)
+    Atribuir somaDif = 0
+    Para i = 0 até tamanho
+    Fim
+    Atribuir desvioP = sqrt((somaDif) / tamanho)
+Fim
+
+Função calcMedia (Inteiro Arranjo vecP, Inteiro tamanho)
+    Atribuir soma = 0
+    Para i = 0 até tamanho
+        Atribuir soma = soma + vecP[i]
+    Fim
+    Atribuir media = soma/tamanho
+Fim
+
+Função calcMediana (Inteiro vecP, Inteiro tamanho)
+    Definir Inteiro num1, num2
+
+    Atribuir num1 = tamanho / 2
+    Atribuir mediana = vecP[num1] + vecP[num2] / 2
+Fim
+
+Função getLargestValue (Inteiro Arranjo vecP, Inteiro tamanho)
+    Atribuir lrgstValue1 = vecP[tamanho-1]
+    Atribuir lrgstValue2 = vecP[tamanho-2]
+    Atribuir lrgstValue3 = vecP[tamanho-3]
+Fim
+
+Função getSmallestValue (Inteiro Arranjo vecP, Inteiro tamanho)
+    Atribuir smllstValue1 = vecP[0]
+    Atribuir smllstValue1 = vecP[1]
+    Atribuir smllstValue1 = vecP[2]
+Fim
+
+Função novoArray (Inteiro vecP)
+    Definir Inteiro j
+
+    Para i = 0 até N
+        Definir Inteiro numOcorrencia
+
+        Atribuir numOcorrencia = ocorrenciaNum(i)
+        Se numOcorrencia != 0
+            Saída "O valori aparece vezes" &  i & numOcorrencia
+            Atribuir contOcorrencias = contOcorrencias + 2
+            Atribuir vecP[j] = i
+            Atribuir vecP[j+1] = "O valor i aparece uma vez" &  i & numOcorrencia
+        Fim
+    Fim
+Fim
+
+Função ocorrenciaNum (Inteiro Arranjo vecP, Inteiro tamanho)
+    Definir Inteiro conta
+
+    Atribuir conta = 0
+    Para i = 0 até N
+        Se valor == vec[i]
+            Atribuir conta = conta + 1
+        Fim
+    Fim
+Fim
+
+Função sortArray (Inteiro Arranjo vecP, Inteiro tamanho)
+    Para i = 0 até tamanho
+        Para i = tamanho - 2 até 0 decrescente
+            Se vecP[i] > vecP[i+1]
+                Atribuir aux = vecP[i+1]
+                Atribuir vecP[i+1] = vecP[i]
+                Atribuir vecP[i] = aux
+            Fim
+        Fim
+    Fim
+Fim

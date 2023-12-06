@@ -1,0 +1,175 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="ariel"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-12-05 11:47:14 "/>
+        <attribute name="created" value="YXJpZWw7REVTS1RPUC1NNlU0Mk9NOzIwMjMtMTItMDU7IjEwOjIyOjUyICI7Mjc2NA=="/>
+        <attribute name="edited" value="YXJpZWw7REVTS1RPUC1NNlU0Mk9NOzIwMjMtMTItMDU7IjExOjQ3OjE0ICI7MzsyODgw"/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="N" type="Integer" array="False" size=""/>
+            <assign variable="N" expression="10000"/>
+            <declare name="vec" type="Integer" array="True" size="10000"/>
+            <declare name="lrgstValue1, lrgstValue2, lrgstValue3" type="Integer" array="False" size=""/>
+            <declare name="smllstValue1, smllstValue2, smllstValue3" type="Integer" array="False" size=""/>
+            <declare name="contOcorrencias, aux" type="Integer" array="False" size=""/>
+            <declare name="mediana, soma, media, somaDif, desvioP" type="Integer" array="False" size=""/>
+            <output expression="&quot;Array aleat&#243;rio: &quot;" newline="True"/>
+            <for variable="i" start="0" end="N" direction="inc" step="1">
+                <assign variable="vec[i]" expression="Rand() % 1000"/>
+                <assign variable="soma" expression="soma + vec[i]"/>
+                <output expression="vec[i]" newline="True"/>
+            </for>
+            <call expression="sortArray(vec, N)"/>
+            <call expression="calcMedia(vec, N)"/>
+            <call expression="calcDesvioP(vec, N)"/>
+            <call expression="calcMediana(vec, N)"/>
+            <call expression="getLargestValue(vec, N)"/>
+            <call expression="getSmallestValue(vec, N)"/>
+            <output expression="&quot;Array aleat&#243;rio ordenado: &quot;" newline="True"/>
+            <for variable="i" start="0" end="N" direction="inc" step="1">
+                <output expression="vec[i]" newline="True"/>
+            </for>
+            <output expression="&quot;3 maiores valores: &quot;&amp; lrgstValue1 &amp; lrgstValue2 &amp; lrgstValue3" newline="True"/>
+            <output expression="&quot;3 menores valores: &quot;&amp; smllstValue1 &amp; smllstValue2 &amp; smllstValue3" newline="True"/>
+            <output expression="&quot;M&#233;dia:&quot; &amp; media" newline="True"/>
+            <output expression="&quot;Desvio padr&#227;o: &quot; &amp; desvioP" newline="True"/>
+            <output expression="&quot;Mediana&quot; &amp; mediana" newline="True"/>
+            <declare name="vec2" type="Integer" array="True" size="contOcorrencias"/>
+            <call expression="novoArray(vec2)"/>
+            <output expression="&quot;Array novo: &quot;" newline="True"/>
+            <for variable="i" start="0" end="contOcorrencias" direction="inc" step="1">
+                <output expression="vec2[i]" newline="True"/>
+            </for>
+            <call expression="calcMedia(vec2, contOcorrencias)"/>
+            <call expression=" calcMediana(vec2, contOcorrencias)"/>
+            <call expression="calcDesvioP(vec2, contOcorrencias)"/>
+            <call expression="calcMedia(vec, N)"/>
+            <call expression="calcDesvioP(vec, N)"/>
+            <call expression="calcMediana(vec, N)"/>
+            <output expression="&quot;M&#233;dia:&quot; &amp; media" newline="True"/>
+            <output expression="&quot;Desvio padr&#227;o: &quot; &amp; desvioP" newline="True"/>
+            <output expression="&quot;Mediana&quot; &amp; mediana" newline="True"/>
+        </body>
+    </function>
+    <function name="calcDesvioP" type="None" variable="">
+        <parameters>
+            <parameter name="vecP" type="Integer" array="True"/>
+            <parameter name="tamanho" type="Integer" array="False"/>
+        </parameters>
+        <body>
+            <assign variable="somaDif" expression="0"/>
+            <for variable="i" start="0" end="tamanho" direction="inc" step="1"/>
+            <assign variable="desvioP" expression="sqrt((somaDif) / tamanho)"/>
+        </body>
+    </function>
+    <function name="calcMedia" type="None" variable="">
+        <parameters>
+            <parameter name="vecP" type="Integer" array="True"/>
+            <parameter name="tamanho" type="Integer" array="False"/>
+        </parameters>
+        <body>
+            <assign variable="soma" expression="0"/>
+            <for variable="i" start="0" end="tamanho" direction="inc" step="1">
+                <assign variable="soma" expression="soma + vecP[i]"/>
+            </for>
+            <assign variable="media" expression="soma/tamanho"/>
+        </body>
+    </function>
+    <function name="calcMediana" type="None" variable="">
+        <parameters>
+            <parameter name="vecP" type="Integer" array="False"/>
+            <parameter name="tamanho" type="Integer" array="False"/>
+        </parameters>
+        <body>
+            <declare name="num1, num2" type="Integer" array="False" size=""/>
+            <assign variable="num1" expression="tamanho / 2"/>
+            <assign variable="mediana" expression="vecP[num1] + vecP[num2] / 2"/>
+        </body>
+    </function>
+    <function name="getLargestValue" type="None" variable="">
+        <parameters>
+            <parameter name="vecP" type="Integer" array="True"/>
+            <parameter name="tamanho" type="Integer" array="False"/>
+        </parameters>
+        <body>
+            <assign variable="lrgstValue1" expression="vecP[tamanho-1]"/>
+            <assign variable="lrgstValue2" expression="vecP[tamanho-2]"/>
+            <assign variable="lrgstValue3" expression="vecP[tamanho-3]"/>
+        </body>
+    </function>
+    <function name="getSmallestValue" type="None" variable="">
+        <parameters>
+            <parameter name="vecP" type="Integer" array="True"/>
+            <parameter name="tamanho" type="Integer" array="False"/>
+        </parameters>
+        <body>
+            <assign variable="smllstValue1" expression="vecP[0]"/>
+            <assign variable="smllstValue1" expression="vecP[1]"/>
+            <assign variable="smllstValue1" expression="vecP[2]"/>
+        </body>
+    </function>
+    <function name="novoArray" type="None" variable="">
+        <parameters>
+            <parameter name="vecP" type="Integer" array="False"/>
+        </parameters>
+        <body>
+            <declare name="j" type="Integer" array="False" size=""/>
+            <for variable="i" start="0" end="N" direction="inc" step="1">
+                <declare name="numOcorrencia" type="Integer" array="False" size=""/>
+                <assign variable="numOcorrencia" expression="ocorrenciaNum(i)"/>
+                <if expression="numOcorrencia != 0">
+                    <then>
+                        <output expression="&quot;O valori aparece vezes&quot; &amp;  i &amp; numOcorrencia" newline="True"/>
+                        <assign variable="contOcorrencias" expression="contOcorrencias + 2"/>
+                        <assign variable="vecP[j]" expression="i"/>
+                        <assign variable="vecP[j+1]" expression="&quot;O valor i aparece uma vez&quot; &amp;  i &amp; numOcorrencia"/>
+                    </then>
+                    <else/>
+                </if>
+            </for>
+        </body>
+    </function>
+    <function name="ocorrenciaNum" type="None" variable="">
+        <parameters>
+            <parameter name="vecP" type="Integer" array="True"/>
+            <parameter name="tamanho" type="Integer" array="False"/>
+        </parameters>
+        <body>
+            <declare name="conta" type="Integer" array="False" size=""/>
+            <assign variable="conta" expression="0"/>
+            <for variable="i" start="0" end="N" direction="inc" step="1">
+                <if expression="valor == vec[i]">
+                    <then>
+                        <assign variable="conta" expression="conta + 1"/>
+                    </then>
+                    <else/>
+                </if>
+            </for>
+        </body>
+    </function>
+    <function name="sortArray" type="None" variable="">
+        <parameters>
+            <parameter name="vecP" type="Integer" array="True"/>
+            <parameter name="tamanho" type="Integer" array="False"/>
+        </parameters>
+        <body>
+            <for variable="i" start="0" end="tamanho" direction="inc" step="1">
+                <for variable="i" start="tamanho - 2" end="0" direction="dec" step="1">
+                    <if expression="vecP[i] &gt; vecP[i+1]">
+                        <then>
+                            <assign variable="aux" expression="vecP[i+1]"/>
+                            <assign variable="vecP[i+1]" expression="vecP[i]"/>
+                            <assign variable="vecP[i]" expression="aux"/>
+                        </then>
+                        <else/>
+                    </if>
+                </for>
+            </for>
+        </body>
+    </function>
+</flowgorithm>

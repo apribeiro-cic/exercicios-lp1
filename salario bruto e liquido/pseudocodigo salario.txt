@@ -1,0 +1,19 @@
+﻿Função Principal
+    Definir Real salarioBruto
+    Definir Real vale
+    Definir Real salarioLiquido
+    Definir Real salarioMinimo
+
+    Saída "Digite o valor atual do salário mínimo: "
+    Entrada salarioMinimo
+    Saída "Digite o valor bruto do seu salário: "
+    Entrada salarioBruto
+    Saída "Digite o valor do seu vale: "
+    Entrada vale
+    Atribuir salarioLiquido = salarioBruto - (salarioBruto * (35.5/100))
+    Se salarioLiquido < salarioMinimo
+        Atribuir salarioLiquido = salarioMinimo
+        Atribuir salarioLiquido = salarioLiquido + vale
+    Fim
+    Saída "O seu salário líquido é: " & salarioLiquido
+Fim

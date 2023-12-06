@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="ariel"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-12-05 10:19:13 "/>
+        <attribute name="created" value="YXJpZWw7REVTS1RPUC1NNlU0Mk9NOzIwMjMtMTItMDU7IjEwOjEyOjExICI7Mjc1OA=="/>
+        <attribute name="edited" value="YXJpZWw7REVTS1RPUC1NNlU0Mk9NOzIwMjMtMTItMDU7IjEwOjE5OjEzICI7MTsyODc1"/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="salarioBruto" type="Real" array="False" size=""/>
+            <declare name="vale" type="Real" array="False" size=""/>
+            <declare name="salarioLiquido" type="Real" array="False" size=""/>
+            <declare name="salarioMinimo" type="Real" array="False" size=""/>
+            <output expression="&quot;Digite o valor atual do sal&#225;rio m&#237;nimo: &quot;" newline="True"/>
+            <input variable="salarioMinimo"/>
+            <output expression="&quot;Digite o valor bruto do seu sal&#225;rio: &quot;" newline="True"/>
+            <input variable="salarioBruto"/>
+            <output expression="&quot;Digite o valor do seu vale: &quot;" newline="True"/>
+            <input variable="vale"/>
+            <assign variable="salarioLiquido" expression="salarioBruto - (salarioBruto * (35.5/100))"/>
+            <if expression="salarioLiquido &lt; salarioMinimo">
+                <then>
+                    <assign variable="salarioLiquido" expression="salarioMinimo"/>
+                    <assign variable="salarioLiquido" expression="salarioLiquido + vale"/>
+                </then>
+                <else/>
+            </if>
+            <output expression="&quot;O seu sal&#225;rio l&#237;quido &#233;: &quot; &amp; salarioLiquido" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>

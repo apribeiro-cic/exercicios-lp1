@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="ariel"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-12-05 10:09:14 "/>
+        <attribute name="created" value="YXJpZWw7REVTS1RPUC1NNlU0Mk9NOzIwMjMtMTItMDU7IjA5OjIxOjQwICI7Mjc2OA=="/>
+        <attribute name="edited" value="YXJpZWw7REVTS1RPUC1NNlU0Mk9NOzIwMjMtMTItMDU7IjEwOjA5OjE0ICI7MjsyODc2"/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="quantidade" type="Integer" array="False" size=""/>
+            <assign variable="quantidade" expression="2"/>
+            <output expression="&quot;Digite a quantidade de discos:&quot;" newline="True"/>
+            <input variable="quantidade"/>
+            <declare name="minMovimentos" type="Integer" array="False" size=""/>
+            <assign variable="minMovimentos" expression="(2^quantidade) - 1"/>
+            <output expression="&quot;Nota&#231;&#227;o: mova a menor pe&#231;a dispon&#237;vel da posi&#231;&#227;o(1, 2 ou 3) para outra posi&#231;&#227;o(1, 2 ou 3)&quot;" newline="True"/>
+            <output expression="&quot;Quantidade m&#237;nima de movimentos:&quot; &amp; minMovimentos" newline="True"/>
+            <call expression="TorreHanoi(1, 3, 2, quantidade)"/>
+        </body>
+    </function>
+    <function name="TorreHanoi" type="None" variable="">
+        <parameters>
+            <parameter name="origem" type="Integer" array="False"/>
+            <parameter name="auxiliar" type="Integer" array="False"/>
+            <parameter name="destino" type="Integer" array="False"/>
+            <parameter name="quantidade" type="Integer" array="False"/>
+        </parameters>
+        <body>
+            <if expression="Quantidade == 1">
+                <then>
+                    <output expression="&quot;Mova de&quot; &amp; origem &amp; &quot;para&quot; &amp; destino" newline="True"/>
+                </then>
+                <else>
+                    <call expression="TorreHanoi(origem, auxiliar, destino, quantidade-1)"/>
+                    <output expression="&quot;Mova de&quot; &amp; origem &amp; &quot;para&quot; &amp; destino" newline="True"/>
+                    <call expression="TorreHanoi(origem, auxiliar, destino, quantidade-1)"/>
+                </else>
+            </if>
+        </body>
+    </function>
+</flowgorithm>
